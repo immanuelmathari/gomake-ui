@@ -3,8 +3,23 @@ import { categories } from '../../../Data'
 import { courses } from '../../../Data'
 import Category from './Category'
 import Corse from './Corse'
+import { motion } from 'framer-motion'
 
 function Course() {
+  const container = {
+    hidden: {
+      opacity: 0,
+      scale: 0,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      }
+    }
+  }
   return (
     <div className='section' id='courses'>
       <div className='text-center'>
@@ -15,14 +30,14 @@ function Course() {
         There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
         </p>
       </div>
-      <div className='grid md:grid-cols-4 sm:grid-cols-2 mt-12 gap-8'>
+      <motion.div variants={container} initial="hidden" whileInView="visible" className='grid md:grid-cols-4 sm:grid-cols-2 mt-12 gap-8'>
         {/* {categories.map((category) => (
           <div>{category.category}</div>
         ))} */}
         {categories.map((category) => {
           return <Category key={category.id} {...category}/>
         })}
-      </div>
+      </motion.div>
       <div className='text-xl font-bold mt-32'>Popular services</div>
       <div className='mt-12 overflow-x-hidden w-full'>
         <div className='flex gap-8 md:w-full sm:w-[170%] xs:w-[340%] w-[480%] animate-slide'>
