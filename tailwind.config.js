@@ -19,7 +19,7 @@ export default {
       animation: {
         slide: "slide 25s linear infinite"
       },
-      keyFrames: {
+      keyframes: {
         slide: {
           "0%,100%" : {transform: "translateX(5%)"},
           "50%" : {transform: "translateX(-120%)"}
